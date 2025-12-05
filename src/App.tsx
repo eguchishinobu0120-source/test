@@ -4,7 +4,15 @@ import { useOthelloGame } from './hooks/useOthelloGame';
 import './App.css';
 
 function App() {
-    const { gameState, placePiece, resetGame, isValidMove } = useOthelloGame();
+    const {
+        gameState,
+        placePiece,
+        resetGame,
+        isValidMove,
+        changeGameMode,
+        changeCPUDifficulty,
+        isCPUThinking
+    } = useOthelloGame();
 
     const handleCellClick = (row: number, col: number) => {
         placePiece(row, col);
@@ -19,7 +27,12 @@ function App() {
                     whiteScore={gameState.whiteScore}
                     gameOver={gameState.gameOver}
                     winner={gameState.winner}
+                    gameMode={gameState.gameMode}
+                    cpuDifficulty={gameState.cpuDifficulty}
+                    isCPUThinking={isCPUThinking}
                     onReset={resetGame}
+                    onGameModeChange={changeGameMode}
+                    onDifficultyChange={changeCPUDifficulty}
                 />
                 <Board
                     board={gameState.board}

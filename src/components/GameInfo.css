@@ -3,6 +3,7 @@
     flex-direction: column;
     gap: 1.5rem;
     max-width: 500px;
+    min-width: 300px;
     width: 100%;
     animation: fadeIn 0.8s ease-out;
 }
@@ -35,6 +36,59 @@
     color: var(--color-text-secondary);
     letter-spacing: 0.2em;
     text-transform: uppercase;
+}
+
+/* ゲームモード選択 */
+.game-mode-selector,
+.difficulty-selector {
+    padding: 1.25rem;
+}
+
+.mode-label,
+.difficulty-label {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+.mode-buttons,
+.difficulty-buttons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.mode-button,
+.difficulty-button {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid rgba(212, 175, 55, 0.2);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition-medium);
+}
+
+.mode-button:hover,
+.difficulty-button:hover {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: var(--color-accent-gold);
+    color: var(--color-text-primary);
+    transform: translateY(-2px);
+}
+
+.mode-active,
+.difficulty-active {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: var(--color-accent-gold);
+    color: var(--color-accent-gold);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
 
 /* スコアボード */
@@ -165,6 +219,48 @@
     box-shadow: 0 0 10px rgba(245, 245, 245, 0.5);
 }
 
+/* CPU思考中インジケーター */
+.thinking-indicator {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.thinking-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-accent-gold);
+    animation: thinkingBounce 1.4s ease-in-out infinite;
+}
+
+.thinking-dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.thinking-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.thinking-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes thinkingBounce {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
 /* リセットボタン */
 .reset-button {
     display: flex;
@@ -237,6 +333,12 @@
     .status-message {
         font-size: 1.125rem;
     }
+
+    .mode-button,
+    .difficulty-button {
+        font-size: 0.8rem;
+        padding: 0.6rem 0.75rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -264,5 +366,10 @@
     .reset-button {
         padding: 0.875rem 1.5rem;
         font-size: 1rem;
+    }
+
+    .mode-buttons,
+    .difficulty-buttons {
+        flex-direction: column;
     }
 }

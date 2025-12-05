@@ -9,6 +9,9 @@ export interface Position {
     col: number;
 }
 
+export type GameMode = 'pvp' | 'pvc'; // Player vs Player or Player vs CPU
+export type CPUDifficulty = 'easy' | 'medium' | 'hard';
+
 export interface GameState {
     board: Board;
     currentPlayer: Player;
@@ -17,6 +20,8 @@ export interface GameState {
     validMoves: Position[];
     gameOver: boolean;
     winner: Player | 'draw' | null;
+    gameMode: GameMode;
+    cpuDifficulty: CPUDifficulty;
 }
 
 export interface Direction {
