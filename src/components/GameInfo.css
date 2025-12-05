@@ -1,0 +1,268 @@
+.game-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 500px;
+    width: 100%;
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* タイトル */
+.game-title {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.title-main {
+    font-size: 3.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg,
+            var(--color-accent-gold) 0%,
+            var(--color-accent-gold-light) 50%,
+            var(--color-accent-gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+    letter-spacing: 0.05em;
+}
+
+.title-sub {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+/* スコアボード */
+.scoreboard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    gap: 1rem;
+}
+
+.score-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+    padding: 0.75rem;
+    border-radius: 12px;
+    transition: all var(--transition-medium);
+    position: relative;
+}
+
+.score-active {
+    background: rgba(212, 175, 55, 0.1);
+    box-shadow:
+        0 0 20px rgba(212, 175, 55, 0.2),
+        inset 0 0 20px rgba(212, 175, 55, 0.05);
+}
+
+.score-active::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    border: 2px solid var(--color-accent-gold);
+    opacity: 0.5;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.score-piece {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.piece-black-indicator {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #0a0a0a 100%);
+}
+
+.piece-white-indicator {
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 50%, #e0e0e0 100%);
+}
+
+.score-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.score-label {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.score-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1;
+}
+
+.score-divider {
+    width: 2px;
+    height: 60px;
+    background: linear-gradient(180deg,
+            transparent 0%,
+            var(--color-accent-gold) 50%,
+            transparent 100%);
+    opacity: 0.3;
+}
+
+/* ゲーム状態 */
+.game-status {
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+}
+
+.status-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.status-icon {
+    font-size: 1.5rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.winner-message {
+    color: var(--color-accent-gold);
+    font-size: 1.5rem;
+}
+
+.turn-indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.turn-black {
+    background: var(--color-piece-black);
+    box-shadow: 0 0 10px rgba(26, 26, 26, 0.5);
+}
+
+.turn-white {
+    background: var(--color-piece-white);
+    box-shadow: 0 0 10px rgba(245, 245, 245, 0.5);
+}
+
+/* リセットボタン */
+.reset-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    background: var(--glass-bg);
+    border: 2px solid var(--color-accent-gold);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all var(--transition-medium);
+    position: relative;
+    overflow: hidden;
+}
+
+.reset-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            transparent 0%,
+            rgba(212, 175, 55, 0.1) 50%,
+            transparent 100%);
+    transform: translateX(-100%);
+    transition: transform var(--transition-medium);
+}
+
+.reset-button:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        var(--shadow-md),
+        0 0 30px rgba(212, 175, 55, 0.4);
+    border-color: var(--color-accent-gold-light);
+}
+
+.reset-button:hover::before {
+    transform: translateX(100%);
+}
+
+.reset-button:active {
+    transform: translateY(0);
+}
+
+.button-icon {
+    font-size: 1.25rem;
+}
+
+.button-text {
+    letter-spacing: 0.05em;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .title-main {
+        font-size: 2.5rem;
+    }
+
+    .scoreboard {
+        padding: 1rem;
+    }
+
+    .score-value {
+        font-size: 1.5rem;
+    }
+
+    .status-message {
+        font-size: 1.125rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title-main {
+        font-size: 2rem;
+    }
+
+    .title-sub {
+        font-size: 0.875rem;
+    }
+
+    .scoreboard {
+        padding: 0.75rem;
+    }
+
+    .score-piece {
+        width: 36px;
+        height: 36px;
+    }
+
+    .score-value {
+        font-size: 1.25rem;
+    }
+
+    .reset-button {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+}

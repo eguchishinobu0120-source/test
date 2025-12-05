@@ -1,0 +1,45 @@
+.app {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.app-container {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
+    max-width: 1400px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 1024px) {
+    .app-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .app {
+        padding: 1rem;
+    }
+
+    .app-container {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .app {
+        padding: 0.5rem;
+    }
+
+    .app-container {
+        gap: 1rem;
+    }
+}
